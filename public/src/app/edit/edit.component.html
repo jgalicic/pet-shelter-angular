@@ -1,0 +1,34 @@
+<div class="container">
+  <h5>Know of a pet needing a home?</h5>
+  <form (submit)="onEditPet()">
+    <div class="form-group">
+      <div *ngIf="this.errors.length > 0">
+        <p class="alert alert-danger" *ngFor="let error of errors">{{error}}</p>
+      </div>
+      <label for="pet_name">Pet name:</label>
+      <input id="pet_name" type="text" class="form-control" [(ngModel)]="pet.name"
+        [ngModelOptions]="{standalone: true}">
+      <label for="pet_type">Pet type:</label>
+      <input id="pet_type" type="text" class="form-control" [(ngModel)]="pet.type"
+        [ngModelOptions]="{standalone: true}">
+      <label for="pet_description">Description:</label>
+      <input id="pet_description" type="text" class="form-control" [(ngModel)]="pet.description"
+        [ngModelOptions]="{standalone: true}">
+      <div class="container" style="max-width: 70%; margin-top: 20px">
+        <h5>Skills:</h5>
+        <label for="skill1">Skill 1:</label>
+        <input id="skill1" type="text" class="form-control" [(ngModel)]="pet.skills[0]"
+          [ngModelOptions]="{standalone: true}">
+        <div *ngIf="pet.skills[0] || pet.skills[1]"><label for="skill2">Skill 2:</label>
+          <input id="skill2" type="text" class="form-control" [(ngModel)]="pet.skills[1]"
+            [ngModelOptions]="{standalone: true}"></div>
+
+        <div *ngIf="pet.skills[1] || pet.skills[2]"><label for="skill3">Skill 3:</label>
+          <input id="skill3" type="text" class="form-control" [(ngModel)]="pet.skills[2]"
+            [ngModelOptions]="{standalone: true}"></div>
+      </div>
+    </div>
+    <button class="btn btn-primary mr-1">Submit</button>
+    <a href="/" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>

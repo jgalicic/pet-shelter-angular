@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-between">
+  <h5>Details about {{pet.name}}</h5>
+  <a href="/">
+    <h5>Home</h5>
+  </a>
+</div>
+
+<table class="table">
+
+  <tbody>
+    <tr>
+      <th scope="row">Pet type:</th>
+      <td>{{pet.type}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Description:</th>
+      <td>{{pet.description}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Skills:</th>
+      <td *ngIf="pet.skills.length == 1">{{pet.skills[0]}}</td>
+      <td *ngIf="pet.skills.length == 2">{{pet.skills[0]}}, {{pet.skills[1]}}</td>
+      <td *ngIf="pet.skills.length == 3">{{pet.skills[0]}}, {{pet.skills[1]}}, {{pet.skills[2]}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Likes:</th>
+      <td>{{pet.likes}}</td>
+    </tr>
+
+    <button *ngIf="liked" class="btn btn-secondary mr-2">Like</button>
+    <button *ngIf="!liked" class="btn btn-success mr-2" (click)=" like()">Like</button>
+    <button class="btn btn-danger" (click)=" deletePet(pet._id)">Adpot this pet</button>
+
+
+  </tbody>
+</table>
